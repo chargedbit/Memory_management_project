@@ -1,0 +1,22 @@
+init memory 4096
+set allocator first_fit
+
+# Scenario 1: Basic Allocation and Free
+malloc 100
+malloc 200
+malloc 300
+free 1
+malloc 50
+dump memory
+stats
+
+# Scenario 2: Fragmentation Check
+set allocator best_fit
+malloc 64
+malloc 64
+malloc 64
+free 4  # Assuming IDs 4,5,6
+malloc 32
+dump memory
+stats
+exit
